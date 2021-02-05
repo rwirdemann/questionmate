@@ -6,7 +6,7 @@ import (
 
 type Questionnaire struct {
 	Abstract  string     `json:"abstract"`
-	Questions []Question `json:"questions"`
+	Questions []Question `json:"questions,omitempty"`
 }
 
 type Question struct {

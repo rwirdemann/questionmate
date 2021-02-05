@@ -2,9 +2,10 @@ package main
 
 import (
 	"fmt"
+	"os"
+
 	"github.com/rwirdemann/questionmate/adapter/repositories/file"
 	"github.com/rwirdemann/questionmate/adapter/repositories/parser"
-	"os"
 )
 
 func main() {

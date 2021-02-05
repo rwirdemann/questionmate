@@ -1,4 +1,7 @@
 build:
+	go build -o bin/questionmate world/http/main.go
+
+build-linux:
 	env GOOS=linux CGO_ENABLED=0 go build ${LDFLAGS} -a -installsuffix cgo -o bin/questionmate world/http/main.go
 
 deploy: build

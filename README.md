@@ -1,6 +1,29 @@
 # Questionmate
 
-Questionmate is a library and API for building configurable online surveys. Surveys are modeled in a YAML based DSL:
+Questionmate is a [Golang](https://www.golang.org) library and API for building configurable online
+surveys, assessments and recommendations. 
+
+## Build
+
+```shell
+make
+```
+
+## Test
+
+```shell
+make test
+```
+
+## Run
+
+```shell
+./bin/questionsmate
+```
+
+## Usage
+
+Surveys are modeled in a YAML based DSL:
 
 ```
 questions:
@@ -22,11 +45,15 @@ questions:
           - sustainability: 1
 ```
 
-A survey consists of a list of questions. A question consists of its id (1), it's text, a type (single or multi) and a list of options (modern, ...). An option can have one or more targets (sustainability) associated with a credit value (3). 
+A survey consists of a list of questions. A question consists of its id (1), it's text, a type
+(single or multi) and a list of options (modern, ...). An option can have one or more targets
+(sustainability) associated with a credit value (3). 
 
 ## Credits
 
-Users can select one or more of the question's options, depending on the question type. A selected option pays into its associated targets. For instance, option 1 *modern* pays 3 credits into the target *sustainability*.
+Users can select one or more of the question's options, depending on the question type. A selected
+option pays into its associated targets. For instance, option 1 *modern* pays 3 credits into the
+target *sustainability*.
 
 ## Question order
 
@@ -34,7 +61,8 @@ Questions are served in a natural order defined by their ids, thus question 2 fo
 
 ## Assessment
 
-At the end of answering a survey an assessment of the given answers can be requested. An assessment consists of a list of targets each associated with its resulting score, modeled by the following go types:
+At the end of answering a survey an assessment of the given answers can be requested. An assessment consists of a list
+of targets each associated with its resulting score, modeled by the following go types:
 
 ```go
 type Target struct {
@@ -48,7 +76,9 @@ type Assessment struct {
 }
 ```
 
-A targets score is calculated by adding up all credits configured for the target based on the given answer set, e.g. if question 1 pays 3 credits into *sustainability* and question 5 pays 1 credits into *sustainability* the target will get an overall score of 4. 
+A targets score is calculated by adding up all credits configured for the target based on the given answer set, e.g. if
+question 1 pays 3 credits into *sustainability* and question 5 pays 1 credits into *sustainability* the target will get
+an overall score of 4. 
 
 A target might contain an optional rating description that explains or assesses the meaning of a targets score.
 

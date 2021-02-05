@@ -1,0 +1,86 @@
+abstract: This questionnaire assesses the fitness of your software system.
+questions:
+  - id: 1
+    text: Estimate the relative business value of the target system on a scale between 0 and 100.
+    type: single
+    options:
+      - value: 1
+        text: 0 - 30
+        targets:
+          - importance: 1
+      - value: 2
+        text: 30 - 60
+        targets:
+          - importance: 5
+      - value: 4
+        text: 60 - 100
+        targets:
+          - importance: 10
+  - id: 2
+    text: How often do incidents occur without first changing the software?
+    type: single
+    options:
+      - value: 1 
+        text: almost never
+        targets:
+          - robustness: 10
+      - value 2: 
+        text: once a week
+        targets:  
+          - robustness: 5
+      - value: 4 
+        text: nearly daily
+        targets:
+          - robustness: 1
+  - id: 3
+    text: How long does it take to get a simple bug fix into production when the actual code fix takes 30 minutes?
+    type: single
+    options:
+      - value: 1
+        text: less than one minute
+        targets:
+          - changeability: 10
+      - value: 2
+        text: a half day
+        targets:
+          - changeability: 5
+      - value: 4 
+        text: more than one day
+        targets: 
+          - changeability: 1
+  - id: 4 
+    text: How many new features go live per month?
+    type: single
+    options:
+      - value: 1
+        text: more than five
+        targets:
+          - extendability: 10
+      - value: 2 
+        text: two to five
+        targets:
+          - extendability: 5
+      - value: 4 
+        text: maybe one
+        targets:
+          - extendability: 2
+      - value: 8 
+        text: I can't remember the last new feature
+        targets:
+          - extendability: 0
+  - id: 5
+    text: Which programming languages does the system use?
+    type: single
+    options:
+      - value: 1
+        text: modern (e.g. go, Rust, Swift)
+        targets:
+         - sustainability: 10
+      - value: 2
+        text: standard (e.g. Java, C/C++, JavaScript, Php, Ruby)
+        targets:
+          - sustainability: 5
+      - value: 4
+        text: expiring (Cobol, Delphi)
+        targets:
+          - sustainability: 1

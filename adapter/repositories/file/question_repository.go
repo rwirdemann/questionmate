@@ -2,10 +2,11 @@ package file
 
 import (
 	"fmt"
-	"github.com/rwirdemann/questionmate/adapter/repositories/parser"
-	"github.com/rwirdemann/questionmate/domain"
 	"io/ioutil"
 	"log"
+
+	"github.com/rwirdemann/questionmate/adapter/repositories/parser"
+	"github.com/rwirdemann/questionmate/domain"
 )
 
 // todo: rename to QuestionnaireRepository
@@ -17,19 +18,16 @@ type QuestionRepository struct {
 	Ratings       map[string][]domain.Rating
 }
 
-func NewQuestionRepository(path string, parser parser.Parser) QuestionRepository {
+func NewQuestionRepository(filename string, parser parser.Parser) QuestionRepository {
 	var questionnaire domain.Questionnaire
 	var questions []domain.Question
 	var ratings map[string][]domain.Rating
 	var descriptions map[int]string
 	var targets map[string]string
 
-	if bytes, ok := readFile(path + "/questions." + parser.Suffix()); ok {
+	if bytes, ok := readFile(filename + "." + parser.Suffix()); ok {
 		questions = parser.ParseQuestions(bytes)
 		questionnaire = parser.ParseQuestionnaire(bytes)
-	}
-
-	if bytes, ok := readFile(path + "/ratings." + parser.Suffix()); ok {
 		ratings = parser.ParseRatings(bytes)
 	}
 
